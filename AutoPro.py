@@ -14,7 +14,7 @@ def actualizar_estado(texto=None):
     if texto:
         estado_actual = texto
     estado_label.config(text="Status: " + estado_actual)
-    root.after(1000, actualizar_estado)  # Actualiza el estado cada segundo
+    root.after(1000, actualizar_estado)
     
 def actualizar_contador():
     global ultimo_tiempo
@@ -32,7 +32,7 @@ def ejecutar_script_en_thread(script, duracion_maxima=None):
 def ejecutar_script(script, duracion_maxima=None):
     global script_en_ejecucion, proceso_script, ultimo_tiempo
     if not script_en_ejecucion:
-        ultimo_tiempo = time.time()  # Guarda el momento actual
+        ultimo_tiempo = time.time()
         script_en_ejecucion = True
         actualizar_estado("Working: " + script)
         try:
@@ -43,10 +43,10 @@ def ejecutar_script(script, duracion_maxima=None):
             actualizar_estado("Listo")
             return
         
-        inicio = time.time()  # Hora de inicio del script
+        inicio = time.time()  
         while proceso_script and proceso_script.poll() is None:
-            time.sleep(1)  # Espera activa
-            root.update()  # Importante para permitir que la GUI se actualice
+            time.sleep(1) 
+            root.update() 
             if duracion_maxima:
                 tiempo_transcurrido = time.time() - inicio
                 progreso = min(int(tiempo_transcurrido / duracion_maxima * 100), 100)
@@ -125,19 +125,19 @@ def ejecutar_script_10():
 button_script_1 = tk.Button(root, text="Reset", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script1.py", 1.5))
 button_script_1.pack()
 
-button_script_2 = tk.Button(root, text="Info", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script5.py", 12))
+button_script_2 = tk.Button(root, text="Info", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script5.py", 14))
 button_script_2.pack()
 
-button_script_3 = tk.Button(root, text="Factu", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script3.py", 12))
+button_script_3 = tk.Button(root, text="Factu", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script3.py", 14))
 button_script_3.pack()
 
-button_script_4 = tk.Button(root, text="Corta", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script4.py", 12))
+button_script_4 = tk.Button(root, text="Corta", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script4.py", 14))
 button_script_4.pack()
 
-button_script_5 = tk.Button(root, text="vicio", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script2.py", 12))
+button_script_5 = tk.Button(root, text="vicio", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script2.py", 14))
 button_script_5.pack()
 
-button_script_6 = tk.Button(root, text="Deriv", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script6.py", 12))
+button_script_6 = tk.Button(root, text="Deriv", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script6.py", 14))
 button_script_6.pack()
 
 button_script_7 = tk.Button(root, text="cerrar", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script7.py", 6))
@@ -149,7 +149,7 @@ button_script_8.pack()
 button_script_9 = tk.Button(root, text="ctrl v", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script9.py", 1.5))
 button_script_9.pack()
 
-button_script_10 = tk.Button(root, text="Vnb", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script10.py", 10))
+button_script_10 = tk.Button(root, text="Vnb", width=5, height=1, command=lambda: ejecutar_script_en_thread("C:/David/AutoPro/scripts/script10.py", 12))
 button_script_10.pack()
 
 button_detener = tk.Button(root, text='Stop', fg="white", bg="red", width=4, height=1, command=detener_script)
